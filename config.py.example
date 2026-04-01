@@ -1,0 +1,35 @@
+# 配置模板文件
+# 复制为 config.py 并填写实际值
+
+import os
+from pathlib import Path
+
+# 项目根目录
+PROJECT_ROOT = Path(__file__).parent.absolute()
+
+# 流水线配置
+COOKIE_FILE = PROJECT_ROOT / "pipeline" / "cookies.txt"
+FFMPEG_BIN = "ffmpeg"  # 或指定完整路径
+DOWNLOADER_SCRIPT = PROJECT_ROOT / "pipeline" / "downloader" / "run.py"
+
+# LM Studio 配置
+LM_STUDIO_URL = "http://198.18.0.1:1234/v1/chat/completions"
+LM_STUDIO_MODEL = "qwen/qwen3-8b"
+
+# AnythingLLM 配置
+ALLM_URL = os.environ.get("ANYTHINGLLM_BASE_URL", "http://localhost:3001").rstrip("/") + "/api/v1"
+ALLM_API_KEY = os.environ.get("ANYTHINGLLM_API_KEY", "")
+ALLM_WORKSPACE = os.environ.get("WORKSPACE_NAME", "抖音收藏库")
+
+# 超时设置
+TIMEOUT = 60
+
+# 代理配置（用于 X 平台）
+PROXY_SERVER = os.environ.get("PW_PROXY", "")
+
+# 采集模式：1=增量更新，2=全量同步
+COLLECT_MODE = os.environ.get("COLLECT_MODE", "1")
+
+# yt-dlp 配置
+YTDLP_BIN = os.environ.get("YTDLP_BIN", "yt-dlp")
+YTDLP_COOKIES = os.environ.get("YTDLP_COOKIES", str(COOKIE_FILE))
