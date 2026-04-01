@@ -1,4 +1,4 @@
-@echo off
+@echo on
 chcp 65001 >nul
 title 抖音全自动 Pipeline 启动器
 echo.
@@ -6,6 +6,8 @@ echo ============================================
 echo    抖音全自动 Pipeline 启动器
 echo ============================================
 echo.
+pause
+
 
 REM 设置工作目录
 set "WORKDIR=%~dp0"
@@ -131,10 +133,10 @@ if "%~1"=="" (
 
 if /i "%MODE%"=="collect" (
     echo 正在启动自动采集模式...
-    python -m pipeline.auto_collector
+    python pipeline/auto_collector.py
 ) else if /i "%MODE%"=="pipeline" (
     echo 正在启动 Pipeline 处理模式...
-    python -m pipeline.pipeline
+    python pipeline/pipeline.py
 ) else (
     echo [错误] 未知模式: %MODE%
     echo 可用模式: collect, pipeline
