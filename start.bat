@@ -98,13 +98,13 @@ python -c "from playwright.sync_api import sync_playwright; print('[通过] Play
 if errorlevel 1 (
     echo [提示] 正在安装 Playwright...
     pip install playwright
-    playwright install chromium
+    python -m playwright install chromium
 ) else (
     REM 检查浏览器是否已安装
     python -c "from playwright.sync_api import sync_playwright; p = sync_playwright().start(); p.chromium.launch(); p.stop()" 2>nul
     if errorlevel 1 (
         echo [提示] 正在安装 Playwright 浏览器...
-        playwright install chromium
+        python -m playwright install chromium
     ) else (
         echo [通过] Playwright 浏览器已就绪
     )
